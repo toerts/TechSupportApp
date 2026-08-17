@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware(['auth', 'admin'])->get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::middleware(['auth', 'admin'])->get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+    Route::middleware(['auth', 'admin'])->patch('/admin/users/{user}/role', [AdminUserController::class, 'updateRole'])->name('admin.users.updateRole');
 });
 
 require __DIR__.'/auth.php';
